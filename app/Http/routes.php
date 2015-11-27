@@ -15,11 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', 'testController@getEmail');
-Route::post('/test', 'testController@postEmail');
+Route::controller('/practice','PracticeController');
+Route::get('/', 'BookController@getIndex');
+Route::get('/products', 'ProductController@getIndex');
+Route::get('/products/show/{name?}', 'ProductController@getShow');
+Route::get('/products/create', 'ProductController@getCreate');
+Route::post('/products/create', 'ProductController@postCreate');
+Route::get('/products/edit/{id?}', 'ProductController@getEdit');
+Route::post('/products/edit', 'ProductController@postEdit');
 
-Route::get('/email', 'EmailController@getIndex');
-Route::post('/email', 'EmailController@postIndex');
+
+Route::get('/books', 'BookController@getIndex');
+Route::get('/books/show/{title?}', 'BookController@getShow');
+Route::get('/books/create', 'BookController@getCreate');
+Route::post('/books/create', 'BookController@postCreate');
+Route::get('/books/edit/{id?}', 'BookController@getEdit');
+Route::post('/books/edit', 'BookController@postEdit');
+Route::get('/products/create', 'ProductController@getCreate');
+Route::post('/products/create', 'ProductController@postCreate');
 
 Route::get('/debug', function() {
 

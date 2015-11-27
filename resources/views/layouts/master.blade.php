@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-        {{-- Yield the title if it exists, otherwise default to 'Foobooks' --}}
+        {{-- Yield the title if it exists, otherwise default to 'p4' --}}
         @yield('title','p4')
     </title>
 
@@ -21,13 +21,19 @@
     @yield('head')
 </head>
 <body>
+    @if(\Session::has('flash_message'))
+    <div class='flash_message'>
+        {{ \Session::get('flash_message') }}
+    </div>
+    @endif
 
     <header>
 
     </header>
     <nav>
         <ul>
-            <li><a href='/'>Go Back To Home</a></li>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/books/create'>Create a book</a></li>
         </ul>
     </nav>
 
