@@ -21,11 +21,12 @@ such as a page specific styesheets.
     @if(!isset($product))
         You have not specified a product
     @else
-        <h1>Show product: {{ $product->name }}</h1>
+        <h2>Show product: {{ $product->name }}</h2>
         <img src="{{ URL::to('/') }}//images/{{ $product->imageUrl }}" alt="{{ $product->name }}"/>
         <p>Description: {{ $product->description }}</p>
         <p>Price: {{ $product->price }}</p>
-        <button type="submit" class="btn btn-primary">Add to Cart</button>
+        <a href='/products/edit/{{$product->id}}'>Edit</a><br>
+        <a href='/products/delete/{{$product->id}}'>Delete</a><br>
     @endif
 
 @stop

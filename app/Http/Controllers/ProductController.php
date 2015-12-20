@@ -44,10 +44,8 @@ class ProductController extends Controller
         );
         // Code here to enter book into the database
         $product = new \p4\Product();
-        echo $request;
         $product->name = $request->name;
         $product->price = $request->price;
-        //$book->author_id = 1;
         //$product->imageUrl = $request->imageUrl;
         $product->description = $request->description;
         $product->save();
@@ -106,18 +104,15 @@ class ProductController extends Controller
             return redirect('/products');
         }
 
-        //return view('books.edit')->with(['book'=>$book, 'authors_for_dropdown' => $authors_for_dropdown]);
-
         return view('products.edit')->with('product',$product);
     }
     /**
-    * Responds to requests to POST /books/edit
+    * Responds to requests to POST /orders/edit
     */
     public function postEdit(Request $request) {
         // Validation
         $product = \p4\Product::find($request->id);
         $product->name = $product->name;
-        //$book->author_id = $request->author;
         $product->price = $request->price;
         $product->description = $request->description;
         $product->imageUrl = $request->imageUrl;
@@ -126,26 +121,11 @@ class ProductController extends Controller
         return redirect('/products/edit/'.$request->id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function getDelete($id = null) {
+	    $product = \p4\Product::find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	    \p4\Product::destroy($id);
+        \Session::flash('flash_message','product deleted.');
+	    return redirect('/products');
+	}
 }

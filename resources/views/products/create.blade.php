@@ -75,7 +75,7 @@ such as a page specific styesheets.
         </div>
 
 
-        <button type="submit" class="btn btn-primary">Add book</button>
+        <button type="submit" class="btn btn-primary">Add Product</button>
     </form>
 
 @stop

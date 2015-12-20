@@ -11,20 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::controller('/practice','PracticeController');
-Route::get('/', 'BookController@getIndex');
+Route::get('/', 'ProductController@getIndex');
 Route::get('/products', 'ProductController@getIndex');
 Route::get('/products/show/{name?}', 'ProductController@getShow');
 Route::get('/products/create', 'ProductController@getCreate');
 Route::post('/products/create', 'ProductController@postCreate');
 Route::get('/products/edit/{id?}', 'ProductController@getEdit');
 Route::post('/products/edit', 'ProductController@postEdit');
+Route::get('/products/delete/{id}', 'ProductController@getDelete');
+Route::get('/orders/create', 'OrderController@getCreate');
+Route::post('/orders/create', 'OrderController@postCreate');
 
 
+/*For practise
+Route::controller('/practice','PracticeController');
 Route::get('/books', 'BookController@getIndex');
 Route::get('/books/show/{title?}', 'BookController@getShow');
 Route::get('/books/create', 'BookController@getCreate');
@@ -33,6 +34,17 @@ Route::get('/books/edit/{id?}', 'BookController@getEdit');
 Route::post('/books/edit', 'BookController@postEdit');
 Route::get('/products/create', 'ProductController@getCreate');
 Route::post('/products/create', 'ProductController@postCreate');
+*/
+
+//For debugging purpose
+if(App::environment('local')) {
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    Route::get('/drop', function() {
+        DB::statement('DROP database p4');
+        DB::statement('CREATE database p4');
+        return 'Dropped p4; created p4.';
+    });
+};
 
 Route::get('/debug', function() {
 

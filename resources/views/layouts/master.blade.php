@@ -28,12 +28,18 @@
     @endif
 
     <header>
-
+        <a href='/'>
+        <img
+        src='http://brandcrowd.com/gallery/brands/pictures/picture13271049136309.jpg'
+        style='width:300px'
+        alt='Foobooks Logo'>
+        </a>
     </header>
     <nav>
         <ul>
             <li><a href='/'>Home</a></li>
-            <li><a href='/books/create'>Create a book</a></li>
+            <li><a href='/products/create'>Add a product</a></li>
+            <li><a href='/orders/create'>Place an order</a></li>
         </ul>
     </nav>
 
@@ -48,8 +54,9 @@
         &copy; {{ date('Y') }} &nbsp;&nbsp;
         <a href='https://github.com/ChaoJiDouDou88/Chang-Liu-P4' class='fa fa-github' target='_blank'> View on Github</a> &nbsp;&nbsp;
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     {{-- Yield any page specific JS files or anything else you might want at the end of the body --}}
     @yield('body')

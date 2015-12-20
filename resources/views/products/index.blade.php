@@ -11,8 +11,9 @@
     @foreach($products as $product)
         <div>
             <h2>{{ $product->name }}</h2>
-            <a href='/products/edit/{{$product->id}}'>Edit</a><br>
+            {{--<a href='/products/edit/{{$product->id}}'>Edit</a><br>--}}
             <a href='/products/show/{{$product->id}}'>View</a><br>
+            {{--<a href='/products/delete/{{$product->id}}'>Delete</a><br>--}}
             <img src="{{ URL::to('/') }}//images/{{ $product->imageUrl }}" alt="{{ $product->name }}"/>
         </div>
     @endforeach
